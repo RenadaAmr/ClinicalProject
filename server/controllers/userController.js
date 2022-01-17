@@ -23,7 +23,6 @@ exports.view = (req, res) => {
       // When done with the connection, release it
       if (!err) {
         res.sendFile(path.join(__dirname+"../../../public/clinical home page.html"))
-        console.log("hoho");
       } else {
         console.log(err);
       }
@@ -36,9 +35,10 @@ exports.add = (req, res) => {
     connection.query('Insert into PATIENT (PATIENT_NAME, PATIENT_NUMBER, PATIENT_AGE, PATIENT_Mail, PATIENT_JOB ) Values ("' + req.body.name + '", "' + req.body.phone + '", "' + req.body.Age + '", "' + req.body.email + '" ,"' + req.body.Job + '") ;', (err, rows) => {
       // When done with the connection, release it
       if (!err) {
-        console.log("allah akbar");
+        res.sendFile(path.join(__dirname+"../../../public/clinical home page.html"))
       } else {
         console.log(err);
       }
+      console.log('The data from user table: \n', rows);
     });
 }
